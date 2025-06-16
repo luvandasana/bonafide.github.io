@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BONAFIDE SAFARI LIMITED - Experience Tanzania</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind CSS configuration for custom colors and font family
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#F5F5DC', // A light cream color for background/accents
+                        gold: '#D4AF37',   // A standard gold color for highlights and accents
+                        black: '#1A1A1A',  // A deep black for text and main backgrounds
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'], // Custom font family
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts for Inter font family -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base styles for the body, applying font and theme colors */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5DC; /* Cream background */
+            color: #1A1A1A; /* Black text */
+        }
+        /* Styles for section visibility (simulating single-page application navigation) */
+        .section {
+            display: none; /* Hide all sections by default */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .section.active {
+            display: block; /* Show active section */
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Styling for the active navigation link */
+        .nav-link.active {
+            border-bottom: 2px solid #D4AF37; /* Gold underline for active link */
+            color: #D4AF37;
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C49F27;
+        }
+    </style>
+</head>
+<body class="font-inter text-black">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-black text-white p-4 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex flex-wrap justify-between items-center">
+            <!-- Company Logo/Name, navigates to home section -->
+            <a href="#" class="text-2xl font-bold text-gold rounded-md p-2 hover:text-white transition-colors duration-300" onclick="showSection('home')">BONAFIDE SAFARI LIMITED</a>
+            <!-- Mobile menu button for small screens -->
+            <div class="block lg:hidden">
+                <button id="menu-button" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            <!-- Navigation links, hidden on small screens by default, toggle by JS -->
+            <div id="nav-links" class="hidden lg:flex flex-col lg:flex-row lg:items-center lg:space-x-8 mt-4 lg:mt-0 w-full lg:w-auto">
+                <a href="#" class="nav-link block p-2 rounded-md hover:bg-gold hover:text-black transition-colors duration-300 active" onclick="showSection('home')">Home</a>
+                <a href="#" class="nav-link block p-2 rounded-md hover:bg-gold hover:text-black transition-colors duration-300" onclick="showSection('services')">Services</a>
+                <a href="#" class="nav-link block p-2 rounded-md hover:bg-gold hover:text-black transition-colors duration-300" onclick="showSection('company-profile')">Company Profile</a>
+                <a href="#" class="nav-link block p-2 rounded-md hover:bg-gold hover:text-black transition-colors duration-300" onclick="showSection('team')">Our Team</a>
+                <a href="#" class="nav-link block p-2 rounded-md hover:bg-gold hover:text-black transition-colors duration-300" onclick="showSection('contact-us')">Contact Us</a>
+                <a href="#" class="nav-link block p-2 rounded-md hover:bg-gold hover:text-black transition-colors duration-300" onclick="showSection('booking')">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <!-- Home Section -->
+        <section id="home" class="section active bg-cream rounded-xl shadow-lg p-6 md:p-10 mb-8">
+            <!-- Hero section with background image and text overlay -->
+            <div class="relative rounded-lg overflow-hidden mb-8 shadow-md">
+                <!-- Placeholder for elephants eating grass image -->
+                <img src="https://dailynews.co.tz/wp-content/uploads/2023/03/Serengeti-National-Park-Tanzania.webp" alt="Elephants eating grass in Tanzania" class="w-full h-64 md:h-96 object-cover rounded-lg">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center rounded-lg">
+                    <div class="text-center p-4">
+                        <h1 class="text-4xl md:text-6xl font-extrabold text-gold leading-tight drop-shadow-lg animate-fade-in-down">BONAFIDE SAFARI LIMITED</h1>
+                        <p class="text-xl md:text-3xl text-cream mt-2 animate-fade-in-up">Your Gateway to Unforgettable Tanzanian Adventures</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Introduction text -->
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-gold mb-4">Discover the Wonders of Tanzania with Us</h2>
+                <p class="text-lg leading-relaxed max-w-3xl mx-auto">
+                    BONAFIDE SAFARI LIMITED, headquartered in Arusha City, Tanzania, is your premier partner for exploring the breathtaking landscapes, rich wildlife, and vibrant cultures of this incredible East African nation. We are dedicated to providing authentic, sustainable, and unforgettable travel experiences.
+                </p>
+            </div>
+
+            <!-- Feature highlights grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg p-6 shadow-md border-t-4 border-gold transition-transform hover:scale-105 duration-300">
+                    <i class="fas fa-route text-gold text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Tailored Experiences</h3>
+                    <p class="text-gray-700">From thrilling safaris to serene beach getaways, we craft itineraries that match your dreams.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md border-t-4 border-gold transition-transform hover:scale-105 duration-300">
+                    <i class="fas fa-users text-gold text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Expert Local Guides</h3>
+                    <p class="text-gray-700">Our experienced team ensures a safe, informative, and truly immersive journey.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md border-t-4 border-gold transition-transform hover:scale-105 duration-300">
+                    <i class="fas fa-heart text-gold text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Sustainable Tourism</h3>
+                    <p class="text-gray-700">We are committed to responsible tourism that benefits local communities and preserves nature.</p>
+                </div>
+            </div>
+
+            <!-- Plan Safari Button - centered -->
+            <div class="text-center mt-10">
+                <a href="#" onclick="showSection('booking')" class="inline-block bg-gold hover:bg-yellow-600 text-black font-bold py-4 px-10 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gold focus:ring-opacity-50 text-xl">
+                    Plan Your Safari with Us! <i class="fas fa-paper-plane ml-3"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section bg-cream rounded-xl shadow-lg p-6 md:p-10 mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-gold text-center mb-8">Our Services</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service Card 1: Tour Guiding -->
+                <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-gold hover:shadow-xl transition-all duration-300">
+                    <i class="fas fa-compass text-gold text-4xl mb-4"></i>
+                    <h3 class="text-2xl font-semibold text-black mb-2">Tour Guiding</h3>
+                    <p class="text-gray-700">Our certified and passionate local guides provide insightful commentary and ensure your safety and enjoyment throughout your journey.</p>
+                </div>
+                <!-- Service Card 2: Safari Packages -->
+                <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-gold hover:shadow-xl transition-all duration-300">
+                    <i class="fas fa-paw text-gold text-4xl mb-4"></i>
+                    <h3 class="text-2xl font-semibold text-black mb-2">Safari Packages</h3>
+                    <p class="text-gray-700">Experience the thrill of wildlife viewing in iconic parks like Serengeti, Ngorongoro Crater, Tarangire, and Lake Manyara. Custom safaris available.</p>
+                </div>
+                <!-- Service Card 3: Kilimanjaro Treks -->
+                <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-gold hover:shadow-xl transition-all duration-300">
+                    <i class="fas fa-mountain text-gold text-4xl mb-4"></i>
+                    <h3 class="text-2xl font-semibold text-black mb-2">Kilimanjaro Treks</h3>
+                    <p class="text-gray-700">Conquer Africa's highest peak with our experienced mountaineering teams, ensuring a safe and memorable ascent.</p>
+                </div>
+                <!-- Service Card 4: Meru Treks -->
+                <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-gold hover:shadow-xl transition-all duration-300">
+                    <i class="fas fa-hiking text-gold text-4xl mb-4"></i>
+                    <h3 class="text-2xl font-semibold text-black mb-2">Meru Treks</h3>
+                    <p class="text-gray-700">Trek Mount Meru, a stunning active volcano offering spectacular views and a fantastic acclimatization climb.</p>
+                </div>
+                <!-- Service Card 5: Zanzibar Beach Getaway -->
+                <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-gold hover:shadow-xl transition-all duration-300">
+                    <i class="fas fa-umbrella-beach text-gold text-4xl mb-4"></i>
+                    <h3 class="text-2xl font-semibold text-black mb-2">Zanzibar Beach Getaway</h3>
+                    <p class="text-gray-700">Relax on the pristine white sands of Zanzibar's beaches, explore Stone Town, and dive into crystal-clear waters.</p>
+                </div>
+                <!-- Service Card 6: Cultural Tours -->
+                <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-gold hover:shadow-xl transition-all duration-300">
+                    <i class="fas fa-mask text-gold text-4xl mb-4"></i>
+                    <h3 class="text-2xl font-semibold text-black mb-2">Cultural Tours</h3>
+                    <p class="text-gray-700">Immerse yourself in the local cultures with visits to Maasai villages, local markets, and historical sites.</p>
+                </div>
+                <!-- Service Card 7: Tailored Holidays -->
+                <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-gold hover:shadow-xl transition-all duration-300">
+                    <i class="fas fa-plane-departure text-gold text-4xl mb-4"></i>
+                    <h3 class="text-2xl font-semibold text-black mb-2">Tailored Holidays</h3>
+                    <p class="text-gray-700">We design comprehensive holiday packages covering various destinations and activities across Tanzania.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Profile Section -->
+        <section id="company-profile" class="section bg-cream rounded-xl shadow-lg p-6 md:p-10 mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-gold text-center mb-8">Company Profile</h2>
+            <!-- About the company -->
+            <div class="bg-white rounded-lg p-6 shadow-md mb-8">
+                <h3 class="text-2xl font-semibold text-black mb-4">About BONAFIDE SAFARI LIMITED</h3>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    BONAFIDE SAFARI LIMITED is a proudly Tanzanian-owned and operated tourism company. Established with a deep passion for our country's natural beauty and rich cultural heritage, we are committed to providing unparalleled travel experiences while promoting sustainable tourism practices. Our local roots mean we have an intimate understanding of the destinations, the wildlife, and the communities, allowing us to offer truly authentic and enriching journeys. We believe in empowering local talent and contributing directly to the welfare of our people and conservation efforts.
+                </p>
+                <p class="text-gray-700 leading-relaxed">
+                    Our mission is to connect travelers with the heart of Tanzania, offering a diverse range of safaris, treks, beach holidays, and cultural immersions. We prioritize personalized service, safety, and creating memories that last a lifetime.
+                </p>
+            </div>
+
+            <!-- Managing Director's Profile / CV -->
+            <div class="bg-white rounded-lg p-6 shadow-md">
+                <h3 class="text-2xl font-semibold text-black mb-4">Managing Director's Profile: Schola Ungelle</h3>
+                <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+                    <!-- Placeholder for MD's profile picture -->
+                    <img src="https://placehold.co/200x200/D4AF37/1A1A1A?text=MD+Profile" alt="Managing Director Profile Picture" class="w-40 h-40 rounded-full object-cover shadow-lg border-4 border-gold">
+                    <div class="text-center md:text-left">
+                        <p class="text-xl font-bold text-gold">Schola Ungelle</p>
+                        <p class="text-lg text-black mb-2">Managing Director</p>
+                        <p class="text-gray-700 leading-relaxed">
+                            With an exceptional career spanning over <span class="font-bold text-gold">35 years</span> in the Tanzanian tourism industry, Schola Ungelle is a revered figure and the driving force behind BONAFIDE SAFARI LIMITED. Schola's profound expertise encompasses all facets of tourism, from meticulous itinerary planning and seamless logistics to providing an unparalleled guest experience.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed mt-2">
+                            Her extensive knowledge of Tanzania's national parks, wildlife behavior, trekking routes, and cultural nuances is unmatched. Schola has personally guided countless expeditions, witnessing the transformation of the industry firsthand and adapting to ensure that BONAFIDE SAFARI LIMITED remains at the forefront of quality and sustainable tourism. Her leadership ensures that every journey with us is not just a trip, but a truly immersive and life-changing adventure rooted in genuine Tanzanian hospitality. Schola's dedication is reflected in the company's commitment to excellence and its strong community ties.
+                        </p>
+                        <!-- More detailed CV points could be added here if needed, e.g., awards, specializations -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Team Section (Concise, focuses on MD as per request) -->
+        <section id="team" class="section bg-cream rounded-xl shadow-lg p-6 md:p-10 mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-gold text-center mb-8">Meet Our Leadership</h2>
+            <div class="bg-white rounded-lg p-6 shadow-md flex flex-col items-center text-center">
+                <!-- Placeholder for MD's profile picture -->
+                <img src="https://placehold.co/200x200/D4AF37/1A1A1A?text=MD+Profile" alt="Managing Director Profile Picture" class="w-48 h-48 rounded-full object-cover mb-6 shadow-lg border-4 border-gold">
+                <h3 class="text-2xl font-semibold text-black">Schola Ungelle</h3>
+                <p class="text-gold text-lg mb-2">Managing Director</p>
+                <p class="text-gray-700 max-w-2xl leading-relaxed">
+                    Schola Ungelle brings over <span class="font-bold text-gold">35 years of invaluable experience</span> in the tourism industry. Her deep understanding of Tanzania's diverse offerings and her commitment to excellence are the cornerstones of BONAFIDE SAFARI LIMITED. She personally ensures that every aspect of your journey is meticulously planned and executed, promising an authentic and memorable adventure.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact-us" class="section bg-cream rounded-xl shadow-lg p-6 md:p-10 mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-gold text-center mb-8">Contact Us</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Contact details column -->
+                <div class="bg-white rounded-lg p-6 shadow-md border-t-4 border-gold">
+                    <h3 class="text-2xl font-semibold text-black mb-4">Get in Touch</h3>
+                    <p class="text-gray-700 mb-4 flex items-center"><i class="fas fa-map-marker-alt text-gold mr-3 text-xl"></i> <strong>Headquarter:</strong> Arusha City, Tanzania</p>
+                    <p class="text-gray-700 mb-4 flex items-center"><i class="fas fa-phone-alt text-gold mr-3 text-xl"></i> <strong>Manager's Phone:</strong> <a href="tel:+255784508578" class="text-blue-600 hover:underline">+255 784 508 578</a></p>
+                    <p class="text-gray-700 mb-4 flex items-center"><i class="fab fa-whatsapp text-green-500 mr-3 text-xl"></i> <strong>WhatsApp:</strong> <a href="https://wa.me/255784508578" target="_blank" class="text-blue-600 hover:underline">Chat on WhatsApp</a></p>
+                    <p class="text-gray-700 mb-4 flex items-center"><i class="fas fa-envelope text-gold mr-3 text-xl"></i> <strong>Managing Director's Email:</strong> <a href="mailto:scholaungelle@gmail.com" class="text-blue-600 hover:underline">scholaungelle@gmail.com</a></p>
+                </div>
+                <!-- Location Map Placeholder column -->
+                <div class="bg-white rounded-lg p-6 shadow-md border-t-4 border-gold">
+                    <h3 class="text-2xl font-semibold text-black mb-4">Location Map (Placeholder)</h3>
+                    <div class="w-full h-64 bg-gray-200 rounded-md flex items-center justify-center text-gray-500">
+                        <i class="fas fa-map text-5xl mb-2"></i>
+                        <p class="text-lg">Map Placeholder (e.g., Google Maps embed)</p>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-4">Visit us in Arusha or contact us via phone/email for inquiries.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Form Section -->
+        <section id="booking" class="section bg-cream rounded-xl shadow-lg p-6 md:p-10 mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-gold text-center mb-8">Book Your Adventure</h2>
+            <div class="bg-white rounded-lg p-8 shadow-md max-w-xl mx-auto border-t-4 border-gold">
+                <p class="text-gray-700 mb-6 text-center">Fill out the form below and we'll get back to you shortly to help plan your unforgettable Tanzanian experience!</p>
+                <form id="booking-form" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Your Full Name</label>
+                        <input type="text" id="name" name="name" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition duration-200" placeholder="John Doe" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Your Email</label>
+                        <input type="email" id="email" name="email" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition duration-200" placeholder="john.doe@example.com" required>
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Your Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition duration-200" placeholder="+255 7XX XXX XXX" required>
+                    </div>
+                    <div>
+                        <label for="service" class="block text-gray-700 text-sm font-bold mb-2">Interested Service</label>
+                        <select id="service" name="service" class="shadow border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition duration-200" required>
+                            <option value="">-- Select a Service --</option>
+                            <option value="Tour Guiding">Tour Guiding</option>
+                            <option value="Safari Packages">Safari Packages</option>
+                            <option value="Kilimanjaro Treks">Kilimanjaro Treks</option>
+                            <option value="Meru Treks">Meru Treks</option>
+                            <option value="Zanzibar Beach Gateway">Zanzibar Beach Gateway</option>
+                            <option value="Cultural Tours">Cultural Tours</option>
+                            <option value="Tailored Holidays">Tailored Holidays</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Your Message / Specific Requirements</label>
+                        <textarea id="message" name="message" rows="5" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition duration-200" placeholder="Tell us more about your travel plans..."></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-gold hover:bg-yellow-600 text-black font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gold focus:ring-opacity-50">
+                            Send Booking Inquiry <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+                <!-- Message area for form submission feedback -->
+                <div id="form-message" class="mt-6 p-4 rounded-md text-center text-sm hidden" role="alert"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-cream p-6 md:p-8 text-center rounded-t-xl shadow-inner mt-8">
+        <div class="container mx-auto">
+            <p class="mb-4">© <span id="current-year"></span> BONAFIDE SAFARI LIMITED. All rights reserved.</p>
+            <p class="text-sm">Headquarter: Arusha City, Tanzania. Your ultimate partner for Tanzanian adventures.</p>
+            <!-- Social media/contact links in footer -->
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="https://wa.me/255784508578" target="_blank" class="text-cream hover:text-gold transition-colors duration-300 text-2xl" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:scholaungelle@gmail.com" class="text-cream hover:text-gold transition-colors duration-300 text-2xl" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <!-- Add more social media links if needed -->
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for navigation and form handling
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year dynamically in the footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Mobile menu toggle functionality
+            const menuButton = document.getElementById('menu-button');
+            const navLinks = document.getElementById('nav-links');
+
+            menuButton.addEventListener('click', () => {
+                navLinks.classList.toggle('hidden'); // Toggle hidden class for display
+                navLinks.classList.toggle('flex');   // Toggle flex for visibility
+            });
+
+            // Function to control section visibility and update navigation links
+            window.showSection = (sectionId) => {
+                const sections = document.querySelectorAll('.section');
+                sections.forEach(section => {
+                    section.classList.remove('active'); // Deactivate all sections
+                    // Reset styling for transition out
+                    section.style.opacity = '0';
+                    section.style.transform = 'translateY(20px)';
+                });
+
+                const activeSection = document.getElementById(sectionId);
+                if (activeSection) {
+                    activeSection.classList.add('active'); // Activate the selected section
+                    // Apply styling for transition in after a small delay
+                    setTimeout(() => {
+                        activeSection.style.opacity = '1';
+                        activeSection.style.transform = 'translateY(0)';
+                    }, 50);
+                }
+
+                // Update active state for navigation links
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active'); // Remove active class from all links
+                });
+                const currentNavLink = document.querySelector(`.nav-link[onclick*="${sectionId}"]`);
+                if (currentNavLink) {
+                    currentNavLink.classList.add('active'); // Add active class to the clicked link
+                }
+
+                // Hide mobile menu after selection on small screens
+                if (window.innerWidth < 1024) {
+                    navLinks.classList.add('hidden');
+                    navLinks.classList.remove('flex');
+                }
+            };
+
+            // Booking form submission handler
+            const bookingForm = document.getElementById('booking-form');
+            const formMessage = document.getElementById('form-message');
+
+            bookingForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission (page reload)
+
+                // Collect form data
+                const formData = {
+                    name: this.name.value,
+                    email: this.email.value,
+                    phone: this.phone.value,
+                    service: this.service.value,
+                    message: this.message.value
+                };
+
+                // --- Client-side Simulation of Email Sending ---
+                // In a real-world scenario, you would send this formData to a backend server
+                // which would then handle sending the email to scholaungelle@gmail.com.
+                // Example of a fetch request to a hypothetical API endpoint:
+                /*
+                fetch('/api/send-booking-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        formMessage.className = 'mt-6 p-4 rounded-md text-center bg-green-100 text-green-700 block';
+                        formMessage.textContent = 'Thank you! Your inquiry has been sent to scholaungelle@gmail.com. We will contact you soon.';
+                        bookingForm.reset(); // Clear the form on successful submission
+                    } else {
+                        formMessage.className = 'mt-6 p-4 rounded-md text-center bg-red-100 text-red-700 block';
+                        formMessage.textContent = 'Failed to send inquiry. Please try again or contact us directly.';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error sending form data:', error);
+                    formMessage.className = 'mt-6 p-4 rounded-md text-center bg-red-100 text-red-700 block';
+                    formMessage.textContent = 'An error occurred. Please try again later.';
+                });
+                */
+
+                // For this demo, we simulate success and display a message to the user.
+                formMessage.className = 'mt-6 p-4 rounded-md text-center bg-green-100 text-green-700 block';
+                formMessage.innerHTML = `
+                    <p class="font-bold">Inquiry Sent Successfully!</p>
+                    <p>Thank you, ${formData.name}! Your inquiry about "${formData.service}" has been received.</p>
+                    <p>In a live application, this information would be sent to <span class="font-bold">scholaungelle@gmail.com</span>.</p>
+                    <p class="mt-2">For immediate assistance, please reach out to the manager via WhatsApp: <a href="https://wa.me/255784508578" target="_blank" class="text-blue-600 hover:underline">+255 784 508 578</a></p>
+                `;
+                bookingForm.reset(); // Clear the form fields after simulated submission
+            });
+        });
+    </script>
+</body>
+</html>
